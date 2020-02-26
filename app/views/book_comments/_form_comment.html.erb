@@ -1,4 +1,4 @@
-<%= form_for [book, book_comment], remote: true do |f| %>　<!--form_forの場合は”remote: true”を記述する場所に注意-->
+<%= form_with (model:[book, book_comment], remote: true) do |f| %>　<!--form_forの場合は”remote: true”を記述する場所に注意-->
     <div class="row">
         <div class="col-sm-12">
             <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
