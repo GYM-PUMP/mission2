@@ -7,7 +7,8 @@ class BookCommentsController < ApplicationController
 	    #comment = Book.new(book_comment_params)
 	    #comment.user_id = current_user.id  ※上記２行はこの記述でもOK
     if @book_comment.save
-    redirect_to book_path(@book)
+    	@form_comment = BookComment.new
+    # redirect_to book_path(@book)
     else
     	@user = current_user
     	render 'books/show'
@@ -30,7 +31,9 @@ end
 			redirect_to book_path(@book)
 		end
 	  	@comment.destroy
-	  	redirect_to book_path(@book), notice: "successfully delete book!"
+	  	@delete_comment_id = params[:book_id]
+	  	# @comment = BookComment.find(params[:book_id])で取ってきたcommentをdeleteしたためなんのcommentをdeleteしたか@delete_comment_id = params[:book_id]で定義している。
+	  	# redirect_to book_path(@book), notice: "successfully delete book!"
 		end
 	# resourceバージョン
 

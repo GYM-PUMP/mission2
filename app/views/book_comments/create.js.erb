@@ -1,0 +1,13 @@
+// $('#book_comments').html("<%= j(render partial: 'book_comments/book_comment', locals: { book: @book}) %>");
+
+
+// $('#form_comments').html("<%= j(render partial: 'book_comments/form_comment', locals: { book: @book, book_comment: @form_comment}) %>");
+//  @book_comment = current_user.book_comments.new(book_comment_params)で（form＿for)作成した記入欄を白紙に書き直ししている。（book_comment.controllerにて）
+// これをしないと、記入欄に一度書いたものはcreateしても消えない。
+
+
+$('textarea').val('')
+// これでform_forで作成したtext_areaが空白になる。なのでbook_commentに影響するtext_areaは空白になるがもともと空白になっていいので問題ない。
+
+$('#book_comments').append("<%= j(render partial: 'book_comments/book', locals: { comment: @book_comment}) %>");
+// appendは降順でどんどんidをcreateしていく。

@@ -1,0 +1,7 @@
+/*
+$('#book_comments').html("<%= j(render partial: 'book_comments/book_comment', locals: { book: @book}) %>");
+*/
+$('#comment_id<%= @delete_comment_id %>').remove();
+// <table id= '「comment_id」renderで呼び出している部分テンプレの中身で定義している名札<%= comment.id %>' class="table">
+// @delete_comment_id　→ books_comment.controllerで定義している @delete_comment_id = params[:book_id] どのidのcommentか。
+// remove();　それをremoveする。
