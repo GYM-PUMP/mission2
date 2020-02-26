@@ -1,0 +1,21 @@
+<table>
+	<% book.book_comments.each do |comment| %>
+		<tr>
+			<td class="col-xs-2 active">コメ主</td>
+			<td class="col-xs-6"><%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %><%= comment.user.name %></td>
+		</tr>
+		<tr>
+			<td class="active">投稿日時</td>
+			<td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+		</tr>
+		<tr>
+			<td class="active">コメ文</td>
+			<td><%= comment.comment %></td>
+		</tr>
+		<tr>
+			<td><% if comment.user == current_user %>
+				<%= link_to "Destroy",book_book_comments_path(comment.id), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{comment.id}" %>
+				<% end %></td>
+		</tr>
+	<% end %>
+</table>
